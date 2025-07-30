@@ -1,4 +1,6 @@
 import React from 'react'
+import { Toaster } from 'react-hot-toast';
+
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -13,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css'
 function App() {
   return (
     <>
+
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +24,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+                <Toaster position="top-center" />
+
       {/* ✅ This enables toasts globally */}
       <ToastContainer
         position="top-center"

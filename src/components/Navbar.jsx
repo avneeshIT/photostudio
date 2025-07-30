@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaCamera, FaUpload, FaInfoCircle, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+   useEffect(() => {
+   if (isOpen) {
+    document.body.style.overflow = 'hidden';
+   } else {
+    document.body.style.overflow = 'auto';
+   }
+   }, [isOpen]);
+
 
   return (
     <nav className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white p-4 shadow-md">

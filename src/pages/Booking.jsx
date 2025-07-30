@@ -18,10 +18,46 @@ const Booking = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Booking Form Data:', formData);
-    alert('Your booking request has been submitted!');
-  };
+  e.preventDefault();
+
+  const { name, email, eventType, date, location } = formData;
+
+  // Basic name validation (at least 2 characters and only letters/spaces)
+  if (!/^[A-Za-z\s]{2,}$/.test(name)) {
+    alert('Please enter a valid name (only letters and at least 2 characters).');
+    return;
+  }
+
+  // Basic email validation
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Event type check
+  if (eventType.trim().length < 3) {
+    alert('Please specify a valid event type (e.g., Wedding, Party).');
+    return;
+  }
+
+  // Date validation (cannot be in the past)
+  const today = new Date().toISOString().split('T')[0];
+  if (date < today) {
+    alert('Event date cannot be in the past.');
+    return;
+  }
+
+  // Location check
+  if (location.trim().length < 3) {
+    alert('Please enter a valid location.');
+    return;
+  }
+
+  // All validations passed
+  console.log('Booking Form Data:', formData);
+  alert('Your booking request has been submitted!');
+};
+
 
   return (
     <div className="min-h-screen bg-purple-50 py-12 px-4">
